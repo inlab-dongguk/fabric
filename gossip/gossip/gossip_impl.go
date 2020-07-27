@@ -575,7 +575,7 @@ func (g *Node) gossipInChan(messages []*emittedGossipMessage, chanRoutingFactory
 		var peers2Send []*comm.RemotePeer
 		if protoext.IsLeadershipMsg(messagesOfChannel[0].GossipMessage) {
 			peers2Send = filter.SelectPeers(len(membership), membership, chanRoutingFactory(gc))
-		} else {
+		} /*if protoext.IsDataMsg()*/ else {
 			peers2Send = filter.SelectPeers(g.conf.PropagatePeerNum, membership, chanRoutingFactory(gc))
 		}
 
